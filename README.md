@@ -22,7 +22,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
     </td>
     <td align="center"><a href="https://github.com/ArthurPdaSilva"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/72280602?v=4" width="100px;"           alt=""/><br /><sub><b>Arthur Pereira</b></sub></a><br /><a href="https://github.com/ArthurPdaSilva" title="Arthur Pereira da Silva">👨‍🚀</a>
     </td>
-    <td align="center"><a href="https://github.com/KarolDiniz"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/90431161?v=4" width="100px;"           alt=""/><br /><sub><b>Arthur Pereira</b></sub></a><br /><a href="https://github.com/KarolDiniz" title="Karoline Diniz Ramos">👨‍🚀</a>
+    <td align="center"><a href="https://github.com/KarolDiniz"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/90431161?v=4" width="100px;"           alt=""/><br /><sub><b>Karoline Diniz Ramos</b></sub></a><br /><a href="https://github.com/KarolDiniz" title="Karoline Diniz Ramos">👨‍🚀</a>
     </td>
   </tr>
 </table>
