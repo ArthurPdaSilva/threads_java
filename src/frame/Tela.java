@@ -133,6 +133,10 @@ public class Tela extends JFrame{
 			cor.setBackground(Color.orange);
 		else if(estado.equals("TERMINATED"))
 			cor.setBackground(Color.gray);
+		else if(estado.equals("BLOCKED"))
+			cor.setBackground(Color.red);
+		else
+			return null;
 		
 		return cor;
 	}
