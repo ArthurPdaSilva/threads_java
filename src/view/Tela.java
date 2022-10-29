@@ -1,20 +1,20 @@
-package frame;
+package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import thread.JThread;
+import model.JThread;
+import model.ListaDeThreads;
 
-public class Tela extends JFrame{
-
-	private ArrayList<JThread> threads = new ArrayList();
-	
+public class Tela extends JFrame {
 	public Tela() {
 		setTitle("Threads");
 		setResizable(false);
@@ -32,7 +32,6 @@ public class Tela extends JFrame{
 	}
 	
 	private void addInfo() {
-		
 		String[] tipos = {"NEW", "WAITING", "RUNNABLE", "TIMED_WAITING", "TERMINATED"};
 		Color[] cores = {Color.cyan, Color.yellow, Color.green, Color.orange, Color.gray};
 		int x = 10;
@@ -59,18 +58,17 @@ public class Tela extends JFrame{
 	}
 
 	private void addThreads() {
-		
 		int y = 50;
-		
-		for(int i = 0; i < threads.size(); i++) {
+		ListaDeThreads lt = ListaDeThreads.obterInstancia();
+		for(int i = 0; i < lt.getThreads().size(); i++) {
 			JPanel status = new JPanel();
 			
 			status.setLayout(null);
 			status.setBounds(380, y, 200, 15);
 			
-			JLabel nome = new JLabel(threads.get(i).getNome());
+			JLabel nome = new JLabel(lt.getThreads().get(i).getNome());
 			nome.setBounds(35, 0, 50, 15);
-			JPanel cor = status(threads.get(i));
+			JPanel cor = status(lt.getThreads().get(i));
 			
 			JButton edit = new JButton("Editar");
 			edit.setBackground(Color.BLACK);
@@ -88,7 +86,6 @@ public class Tela extends JFrame{
 	}
 
 	private void addButtons() {
-		
 		String[] bts = {"Nova Thread", "Recarregar"};
 		int x = 70;
 		int y = 50;
@@ -100,6 +97,24 @@ public class Tela extends JFrame{
 			bt.setBorder(null);
 			bt.setBounds(x, y, 200, 40);
 			bt.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			if(i == 0) {
+                bt.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String jp = JOptionPane.showInputDialog("Qual será o nome da Thread?");
+						ListaDeThreads lt = ListaDeThreads.obterInstancia();
+						lt.adicionarThread(new JThread(jp));
+						addThreads();
+						new Tela();
+					}
+                });
+			} else
+                bt.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+                        new Tela();
+                    }
+                });
 			this.add(bt);
 			y += 60;
 		}
@@ -107,14 +122,10 @@ public class Tela extends JFrame{
 	}
 
 	private void addDivisores() {
-		
 		JPanel d1 = new JPanel();
-		
 		d1.setBounds(347, 25, 2, 400);
 		d1.setBackground(Color.black);
-		
 		this.add(d1);
-		
 	}
 	
 	private JPanel status (JThread status) {
@@ -140,5 +151,4 @@ public class Tela extends JFrame{
 		
 		return cor;
 	}
-	
 }

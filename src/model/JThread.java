@@ -1,4 +1,4 @@
-package thread;
+package model;
 
 public class JThread extends Thread{
 
