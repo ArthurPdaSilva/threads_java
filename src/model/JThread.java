@@ -16,5 +16,23 @@ public class JThread extends Thread{
 		this.nome = name;
 	}
 	
+	@Override
+	public void run() {
+		System.out.println("Thread " + this.getNome() + " Rodadando");
+
+		try {
+			this.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	public void esperar() {
+		try {
+			this.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
