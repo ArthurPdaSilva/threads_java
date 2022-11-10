@@ -24,7 +24,7 @@ public class HandleEditar implements ActionListener{
 		
 		
 		for (int i = 0; i < lt.getThreads().size(); i++) {
-			String[] options = { "WAITING", "RUNNABLE", "TIMED_WAITING", "TERMINATED" };
+			String[] options = { "WAITING", "RUNNABLE", "RUN", "TIMED_WAITING", "TERMINATED" };
 			int estado = JOptionPane.showOptionDialog(null, "Informe para qual estado deseja alterar:",
 					"Escolha uma das opções a seguir: ", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.WARNING_MESSAGE, null, options, options[0]);
@@ -38,10 +38,18 @@ public class HandleEditar implements ActionListener{
 				
 				break;
 			case 1:
-				thread.start();
-				cor = tela.status(thread);
+				if(String.valueOf(thread.getState()).equals("NEW")) {
+					thread.start();
+					cor = tela.status(thread);
+				}else {
+					thread.notify();
+				}
 				break;
 			case 2:
+				thread.run();
+				cor = tela.status(thread);
+				break;
+			case 3:
 				try {
 					int tempo = Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo para ela ficar adormecida"));
 					
@@ -55,13 +63,14 @@ public class HandleEditar implements ActionListener{
 					
 				} catch (InterruptedException e1) {e1.printStackTrace();}
 				break;
-			case 3:
+			case 4:
 				thread.interrupt();
 				cor = tela.status(thread);
 				break;
 			}
 			tela.dispose();
 			new Tela();
+			System.out.println(thread.getState());
 		}
 	}
 }

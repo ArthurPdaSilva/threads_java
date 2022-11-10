@@ -21,8 +21,9 @@ public class JThread extends Thread{
 		System.out.println("Thread " + this.getNome() + " Rodadando");
 
 		try {
-			this.join();
+			this.wait();
 		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
